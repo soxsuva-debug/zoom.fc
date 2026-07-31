@@ -287,7 +287,7 @@
     <!-- HOME / MISSION SECTION -->
     <section id="home" class="hero">
         <h1>DOMINATE THE PITCH.</h1>
-        <p>Welcome to ZOOM.FC. We're a competitive esports team playing Rematch, working hard to win games and climb the ranks.</p>
+        <p>Welcome to ZOOM.FC. We're a competitive esports team playing Rematch, working hard to climb to the top.</p>
         
         <div class="grid-3" style="text-align: left; margin-top: 5rem;">
             <div class="card">
@@ -300,7 +300,7 @@
             </div>
             <div class="card">
                 <h3>Active Games</h3>
-                <p>We play <strong>Rematch</strong> matches and tournaments every day to keep our skills sharp.</p>
+                <p>We play Rematch scrimmages every day to keep our skills sharp.</p>
             </div>
         </div>
     </section>
@@ -371,7 +371,7 @@
                 <a href="https://discord.gg/hHMV3q6TDJ" target="_blank" class="link-card">
                     <div>
                         <div class="link-title">Discord Community</div>
-                        <div class="link-desc">Join our server to play with us or hang out.</div>
+                        <div class="link-desc">Join our 63-member community server to play with us or hang out.</div>
                     </div>
                     <div class="link-action">Open Discord</div>
                 </a>
@@ -405,7 +405,7 @@
     </footer>
 
     <script>
-        // Snowflake Background Animation Script
+        // Enhanced Snowflakes Background Animation Script (Smooth Circular Flakes)
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -417,16 +417,18 @@
         window.addEventListener('resize', resizeCanvas);
 
         const snowflakes = [];
-        const numSnowflakes = 65;
+        const numSnowflakes = 120; // Increased count
 
         for (let i = 0; i < numSnowflakes; i++) {
             snowflakes.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                radius: Math.random() * 2 + 1,
-                speedY: Math.random() * 0.7 + 0.3,
-                speedX: (Math.random() - 0.5) * 0.4,
-                opacity: Math.random() * 0.6 + 0.2
+                radius: Math.random() * 2.5 + 0.8,
+                speedY: Math.random() * 0.9 + 0.4,
+                speedX: (Math.random() - 0.5) * 0.5,
+                opacity: Math.random() * 0.7 + 0.3,
+                angle: Math.random() * Math.PI * 2,
+                spin: (Math.random() - 0.5) * 0.03
             });
         }
 
@@ -441,14 +443,17 @@
                 ctx.fill();
 
                 flake.y += flake.speedY;
-                flake.x += flake.speedX;
+                flake.x += flake.speedX + Math.sin(flake.angle) * 0.3;
+                flake.angle += flake.spin;
 
-                if (flake.y > canvas.height) {
-                    flake.y = 0;
+                if (flake.y > canvas.height + 10) {
+                    flake.y = -10;
                     flake.x = Math.random() * canvas.width;
                 }
-                if (flake.x > canvas.width || flake.x < 0) {
-                    flake.x = Math.random() * canvas.width;
+                if (flake.x > canvas.width + 10) {
+                    flake.x = -10;
+                } else if (flake.x < -10) {
+                    flake.x = canvas.width + 10;
                 }
             });
 
