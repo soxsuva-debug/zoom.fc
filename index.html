@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* Ambient Dynamic Background Glows & Scanlines */
+        /* Ambient Dynamic Background Glows */
         .bg-fx {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -317,7 +317,7 @@
             <div class="owner-section" style="margin-top: 3.5rem;">
                 <div class="owner-card" onclick="copyToClipboard('_lost101', this)">
                     <div class="owner-img-container">
-                        <img src="lost" alt="_lost101" class="owner-img">
+                        <img src="./lost.png" alt="_lost101" class="owner-img" onerror="this.onerror=null; this.src='./lost.jpg';">
                     </div>
                     <div class="owner-info">
                         <span class="badge">Franchise Owner</span>
@@ -333,7 +333,7 @@
                 <!-- Player 2: eXodius (copies bigsteppa_batman) -->
                 <div class="player-card" onclick="copyToClipboard('bigsteppa_batman', this)">
                     <div class="player-img-container">
-                        <img src="exo" alt="eXodius" class="player-img">
+                        <img src="./exo.jpg" alt="eXodius" class="player-img" onerror="this.onerror=null; this.src='./exo.png';">
                     </div>
                     <div class="player-name">eXodius</div>
                     <div class="player-role">Striker</div>
@@ -343,7 +343,7 @@
                 <!-- Player 3: soxsuvaa -->
                 <div class="player-card" onclick="copyToClipboard('soxsuvaa', this)">
                     <div class="player-img-container">
-                        <img src="suva" alt="soxsuvaa" class="player-img">
+                        <img src="./suva.jpg" alt="soxsuvaa" class="player-img" onerror="this.onerror=null; this.src='./suva.png';">
                     </div>
                     <div class="player-name">soxsuvaa</div>
                     <div class="player-role">Defender</div>
@@ -357,7 +357,7 @@
     <section id="connect">
         <div style="max-width: 1000px; margin: 0 auto;">
             <h2>Connect With Us</h2>
-            <p class="subtitle">Access our official communication hubs, organization registry, and league page.</p>
+            <p class="subtitle">Access our official communication hubs, organization registry, and social channels.</p>
 
             <div class="link-list">
                 <!-- Click-to-Copy Official Email -->
@@ -387,13 +387,13 @@
                     <div class="link-action">Open Nexus</div>
                 </a>
 
-                <!-- Franchise Account / Team Link -->
-                <a href="#home" class="link-card">
+                <!-- Franchise TikTok Link -->
+                <a href="https://www.tiktok.com/@zoom.esports5" target="_blank" class="link-card">
                     <div>
-                        <div class="link-title">Franchise Account & Team Link</div>
-                        <div class="link-desc">Access our primary franchise hub profile and official organization registry.</div>
+                        <div class="link-title">Franchise Account (TikTok)</div>
+                        <div class="link-desc">Check out our official TikTok page for highlights, clips, and team updates.</div>
                     </div>
-                    <div class="link-action">View Hub</div>
+                    <div class="link-action">Open TikTok</div>
                 </a>
             </div>
         </div>
