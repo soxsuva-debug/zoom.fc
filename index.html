@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZOOM.FC | Rematch Esports Ecosystem</title>
+    <title>ZOOM.FC | Rematch Esports Elite</title>
     <style>
         :root {
-            --bg-deep: #050505;
-            --bg-card: #0e0e0e;
-            --bg-card-hover: #161616;
-            --border-color: #222222;
-            --border-glow: #444444;
-            --text-main: #f5f5f5;
-            --text-muted: #888888;
+            --bg-deep: #020202;
+            --bg-card: #080808;
+            --bg-card-hover: #101010;
+            --border-color: #1a1a1a;
+            --border-glow: #333333;
+            --text-main: #f8f9fa;
+            --text-muted: #737373;
             --accent: #ffffff;
+            --accent-dim: rgba(255, 255, 255, 0.05);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; scroll-behavior: smooth; }
         
         body { 
             background-color: var(--bg-deep); 
@@ -25,104 +26,110 @@
             overflow-x: hidden;
         }
 
-        /* Dynamic Background Particle/Glow Animation */
-        .bg-animation {
+        /* Ambient Dynamic Background Glows & Scanlines */
+        .bg-fx {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             pointer-events: none;
             z-index: -1;
             background: 
-                radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
-            animation: pulseBg 10s ease-in-out infinite alternate;
+                radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+                radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            animation: ambientShift 12s ease-in-out infinite alternate;
         }
 
-        @keyframes pulseBg {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.05); opacity: 1; }
+        @keyframes ambientShift {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.06); opacity: 1; }
         }
 
-        /* Header Navigation */
+        /* Cyber Glass Header */
         header { 
-            background: rgba(5, 5, 5, 0.85); 
-            backdrop-filter: blur(12px); 
+            background: rgba(2, 2, 2, 0.9); 
+            backdrop-filter: blur(16px); 
             border-bottom: 1px solid var(--border-color); 
-            position: sticky; top: 0; z-index: 1000; 
+            position: fixed; top: 0; width: 100%; z-index: 1000; 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 1.25rem 5%; 
+            padding: 1.2rem 6%; 
         }
 
         .logo { 
-            font-weight: 900; font-size: 1.4rem; letter-spacing: 3px; 
+            font-weight: 900; font-size: 1.35rem; letter-spacing: 3px; 
             color: var(--accent); text-decoration: none; 
-            text-shadow: 0 0 20px rgba(255,255,255,0.2);
-            transition: transform 0.3s ease;
+            text-shadow: 0 0 25px rgba(255,255,255,0.25);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .logo:hover { transform: scale(1.05); }
 
-        nav { display: flex; gap: 2rem; }
+        nav { display: flex; gap: 2.5rem; }
         nav a { 
-            color: var(--text-muted); text-decoration: none; font-size: 0.9rem; 
-            font-weight: 600; letter-spacing: 1px; text-transform: uppercase; 
+            color: var(--text-muted); text-decoration: none; font-size: 0.85rem; 
+            font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; 
             transition: color 0.3s ease, text-shadow 0.3s ease; 
         }
         nav a:hover { 
             color: var(--accent); 
-            text-shadow: 0 0 10px rgba(255,255,255,0.5); 
+            text-shadow: 0 0 12px rgba(255,255,255,0.6); 
         }
 
-        /* Sections */
+        /* Sections Structure */
         section { 
-            padding: 7rem 5% 5rem; 
-            max-width: 1300px; 
+            padding: 8rem 6% 6rem; 
+            max-width: 1350px; 
             margin: 0 auto; 
             border-bottom: 1px solid var(--border-color); 
             opacity: 0; 
-            transform: translateY(30px); 
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform: translateY(40px); 
+            animation: sectionAppear 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         section:nth-of-type(1) { animation-delay: 0.1s; }
         section:nth-of-type(2) { animation-delay: 0.2s; }
         section:nth-of-type(3) { animation-delay: 0.3s; }
-        section:nth-of-type(4) { animation-delay: 0.4s; }
 
-        @keyframes fadeInUp {
+        @keyframes sectionAppear {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero Section */
+        /* Hero / Home Section */
         .hero { 
             text-align: center; 
-            padding: 9rem 5% 6rem; 
-            background: radial-gradient(circle at center, #141414 0%, var(--bg-deep) 75%);
+            padding: 11rem 6% 7rem; 
+            background: radial-gradient(circle at center, #0a0a0a 0%, var(--bg-deep) 80%);
             position: relative;
         }
         .hero h1 { 
-            font-size: clamp(2.5rem, 6vw, 4.5rem); 
+            font-size: clamp(2.8rem, 7vw, 5rem); 
             font-weight: 900; 
-            letter-spacing: -1px; 
+            letter-spacing: -1.5px; 
             margin-bottom: 1.5rem; 
-            background: linear-gradient(180deg, #ffffff 30%, #777777 100%);
+            background: linear-gradient(180deg, #ffffff 20%, #666666 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: titleGlow 4s ease-in-out infinite alternate;
         }
+
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 15px rgba(255,255,255,0.1)); }
+            100% { filter: drop-shadow(0 0 30px rgba(255,255,255,0.25)); }
+        }
+
         .hero p { 
             color: var(--text-muted); 
-            max-width: 650px; 
+            max-width: 700px; 
             margin: 0 auto; 
             font-size: 1.15rem; 
             line-height: 1.8;
         }
 
-        /* Grid Layouts */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        /* Cards Layout */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.2rem; margin-top: 4rem; }
         
         .card { 
             background: var(--bg-card); 
             border: 1px solid var(--border-color); 
-            padding: 2.5rem; 
-            border-radius: 16px; 
+            padding: 2.8rem; 
+            border-radius: 18px; 
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -131,153 +138,149 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
         .card:hover { 
             transform: translateY(-8px); 
             border-color: var(--border-glow); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6); 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7); 
         }
         .card:hover::before { opacity: 1; }
-        .card h3 { font-size: 1.35rem; margin-bottom: 1rem; color: var(--accent); font-weight: 800; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+        .card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--accent); font-weight: 800; letter-spacing: -0.5px; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
 
-        /* Stats Grid */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .stat-card { 
-            background: var(--bg-card); 
-            border: 1px solid var(--border-color); 
-            padding: 2.5rem 2rem; 
-            border-radius: 16px; 
-            text-align: center; 
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
-        }
-        .stat-card:hover { transform: translateY(-5px); border-color: var(--border-glow); }
-        .stat-value { font-size: 3rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem; letter-spacing: -1px; }
-        .stat-label { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
-
-        /* Owner Section */
-        .owner-section { margin-top: 4rem; }
+        /* Core Three Roster & Leadership Section */
+        .roster-container { max-width: 1000px; margin: 0 auto; }
+        
+        /* Franchise Owner Layout */
         .owner-card { 
-            background: linear-gradient(135deg, #141414, #0a0a0a); 
+            background: linear-gradient(135deg, #0d0d0d, #050505); 
             border: 1px solid var(--border-glow); 
             border-radius: 20px; 
             display: flex; flex-direction: column; align-items: center; 
-            padding: 2.5rem; gap: 2.5rem; cursor: pointer; 
-            position: relative; overflow: hidden;
+            padding: 2.8rem; gap: 2.5rem; cursor: pointer; 
+            position: relative; overflow: hidden; margin-bottom: 2.5rem;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
         .owner-card:hover { 
             transform: translateY(-6px); 
             border-color: var(--accent); 
-            box-shadow: 0 25px 50px rgba(255,255,255,0.06); 
+            box-shadow: 0 30px 60px rgba(255,255,255,0.07); 
         }
         .owner-img-container { 
-            width: 130px; height: 130px; border-radius: 50%; overflow: hidden; 
-            border: 2px solid var(--accent); flex-shrink: 0; background: #1a1a1a; 
-            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+            width: 140px; height: 140px; border-radius: 50%; overflow: hidden; 
+            border: 2px solid var(--accent); flex-shrink: 0; background: #111; 
+            box-shadow: 0 0 25px rgba(255,255,255,0.12);
         }
-        .owner-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .owner-card:hover .owner-img { transform: scale(1.08); }
-        .owner-info { text-align: center; }
+        .owner-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .owner-card:hover .owner-img { transform: scale(1.1); }
+        .owner-info { text-align: center; flex-grow: 1; }
         @media(min-width: 768px) { 
             .owner-card { flex-direction: row; text-align: left; } 
             .owner-info { text-align: left; } 
         }
+        
         .badge { 
             display: inline-block; background: var(--accent); color: var(--bg-deep); 
-            font-size: 0.75rem; font-weight: 900; padding: 0.35rem 0.85rem; 
+            font-size: 0.75rem; font-weight: 900; padding: 0.35rem 0.9rem; 
             border-radius: 30px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; 
         }
-        .owner-name { font-size: 2.2rem; font-weight: 900; color: var(--accent); margin-bottom: 0.5rem; letter-spacing: -0.5px; }
-        .owner-desc { color: var(--text-muted); font-size: 1rem; max-width: 550px; line-height: 1.7; }
+        .member-name { font-size: 2.2rem; font-weight: 900; color: var(--accent); margin-bottom: 0.4rem; letter-spacing: -0.5px; }
+        .member-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-        /* Roster Grid */
-        .roster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        /* Duo Roster Grid (Core Three) */
+        .duo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.2rem; }
         .player-card { 
             background: var(--bg-card); 
             border: 1px solid var(--border-color); 
-            border-radius: 16px; overflow: hidden; text-align: center; padding-bottom: 1.5rem; 
+            border-radius: 18px; overflow: hidden; text-align: center; padding-bottom: 2rem; 
             cursor: pointer; position: relative; 
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease; 
         }
         .player-card:hover { 
             transform: translateY(-8px); 
             border-color: var(--border-glow); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6); 
         }
         .player-img-container { 
-            width: 100%; height: 240px; background: #121212; overflow: hidden; 
+            width: 100%; height: 260px; background: #0c0c0c; overflow: hidden; 
             border-bottom: 1px solid var(--border-color); position: relative; 
         }
         .player-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .player-card:hover .player-img { transform: scale(1.1); }
-        .player-name { font-size: 1.25rem; font-weight: 800; margin: 1.25rem 0 0.25rem; color: var(--accent); }
-        .player-role { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .player-name { font-size: 1.4rem; font-weight: 800; margin: 1.5rem 0 0.3rem; color: var(--accent); }
+        .player-role { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
         
         .action-hint { 
-            display: inline-block; padding: 0.5rem 1.2rem; background: rgba(255,255,255,0.03); 
+            display: inline-block; padding: 0.55rem 1.4rem; background: var(--accent-dim); 
             border: 1px solid var(--border-color); color: var(--text-main); border-radius: 8px; 
-            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
-            transition: all 0.3s ease; 
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
         }
-        .player-card:hover .action-hint, .owner-card:hover .action-hint { 
+        .player-card:hover .action-hint, .owner-card:hover .action-hint, .link-card:hover .link-action { 
             background: var(--accent); color: var(--bg-deep); border-color: var(--accent); 
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            box-shadow: 0 0 20px rgba(255,255,255,0.35);
         }
 
-        /* Connect / Links List */
-        .link-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+        /* Connect Hub Links */
+        .link-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 3.5rem; max-width: 950px; margin-left: auto; margin-right: auto; }
         .link-card { 
             display: flex; justify-content: space-between; align-items: center; 
             background: var(--bg-card); border: 1px solid var(--border-color); 
-            padding: 1.75rem 2.5rem; border-radius: 16px; text-decoration: none; 
-            color: var(--text-main); 
+            padding: 1.8rem 2.8rem; border-radius: 18px; text-decoration: none; 
+            color: var(--text-main); cursor: pointer;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
         }
         .link-card:hover { 
             border-color: var(--accent); background: var(--bg-card-hover); 
-            transform: translateX(6px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            transform: translateX(6px); box-shadow: 0 15px 35px rgba(0,0,0,0.6); 
         }
-        .link-title { font-weight: 800; font-size: 1.2rem; color: var(--accent); }
-        .link-desc { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
-        .link-arrow { font-size: 1.2rem; font-weight: 900; color: var(--accent); transition: transform 0.3s ease; }
-        .link-card:hover .link-arrow { transform: translateX(5px); }
+        .link-title { font-weight: 800; font-size: 1.2rem; color: var(--accent); margin-bottom: 0.2rem; }
+        .link-desc { color: var(--text-muted); font-size: 0.9rem; }
+        .link-action { 
+            padding: 0.55rem 1.2rem; background: var(--accent-dim); 
+            border: 1px solid var(--border-color); border-radius: 8px; 
+            font-size: 0.8rem; font-weight: 700; color: var(--text-main);
+            transition: all 0.3s ease; flex-shrink: 0;
+        }
 
         /* Section Headings */
-        h2 { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.5px; color: var(--accent); }
-        .subtitle { color: var(--text-muted); font-size: 1.05rem; margin-top: 0.5rem; }
+        h2 { font-size: 2.6rem; font-weight: 900; letter-spacing: -1px; color: var(--accent); }
+        .subtitle { color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem; }
 
-        /* Toast Notification Animation */
+        /* Toast Popup Notification Animation */
         .toast { 
-            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); 
-            background: #ffffff; color: #050505; padding: 0.9rem 2rem; border-radius: 40px; 
-            font-weight: 800; font-size: 0.95rem; box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
+            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(120px); 
+            background: #ffffff; color: #020202; padding: 0.95rem 2.2rem; border-radius: 40px; 
+            font-weight: 800; font-size: 0.95rem; box-shadow: 0 20px 50px rgba(0,0,0,0.7); 
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease; 
             opacity: 0; z-index: 2000; pointer-events: none; letter-spacing: 0.5px;
         }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-        footer { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; }
+        footer { text-align: center; padding: 3.5rem; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1.5px; }
 
+        /* Mobile Responsive Tweaks */
         @media(max-width: 768px) {
             nav { display: none; }
-            section { padding: 5rem 5% 4rem; }
+            section { padding: 6rem 5% 5rem; }
+            .hero { padding: 9rem 5% 5rem; }
+            .link-card { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+            .link-action { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-animation"></div>
+    <div class="bg-fx"></div>
 
     <header>
         <a href="#home" class="logo">ZOOM.FC</a>
         <nav>
             <a href="#home">Home</a>
-            <a href="#stats">Stats</a>
             <a href="#roster">Roster</a>
             <a href="#connect">Connect</a>
         </nav>
@@ -286,7 +289,7 @@
     <!-- HOME / MISSION SECTION -->
     <section id="home" class="hero">
         <h1>DOMINATE THE PITCH.</h1>
-        <p>Welcome to ZOOM.FC. We are an elite competitive powerhouse operating within the Rematch ecosystem, driven by absolute precision, elite teamwork, and an unyielding hunger for championship victory.</p>
+        <p>Welcome to ZOOM.FC. We are an elite competitive force operating within the Rematch ecosystem, driven by absolute precision, elite teamwork, and an unyielding hunger for championship victory.</p>
         
         <div class="grid-3" style="text-align: left; margin-top: 5rem;">
             <div class="card">
@@ -304,135 +307,99 @@
         </div>
     </section>
 
-    <!-- STATS SECTION -->
-    <section id="stats">
-        <h2>Team Performance</h2>
-        <p class="subtitle">Official live tracking metrics across current Rematch tournaments.</p>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value">24-6</div>
-                <div class="stat-label">Match Record</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">#2</div>
-                <div class="stat-label">League Ranking</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">80%</div>
-                <div class="stat-label">Win Rate</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">+42</div>
-                <div class="stat-label">Goal Differential</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ROSTER & LEADERSHIP SECTION -->
+    <!-- ROSTER & LEADERSHIP SECTION (CORE THREE ONLY) -->
     <section id="roster">
-        <h2>Roster & Leadership</h2>
-        <p class="subtitle">Click any player or owner card to instantly copy their official username to your clipboard.</p>
+        <div class="roster-container">
+            <h2>Roster & Leadership</h2>
+            <p class="subtitle">Click any member card to instantly copy their core username to your clipboard.</p>
 
-        <!-- Franchise Owner -->
-        <div class="owner-section">
-            <div class="owner-card" onclick="copyToClipboard('_lost101', this)">
-                <div class="owner-img-container">
-                    <img src="image_2.png" alt="_lost101" class="owner-img">
-                </div>
-                <div class="owner-info">
-                    <span class="badge">Franchise Owner</span>
-                    <div class="owner-name">_lost101</div>
-                    <p class="owner-desc">Founder and supreme head of ZOOM.FC. Directing overall team strategy, franchise management, roster acquisitions, and high-level competitive operations within the Rematch ecosystem.</p>
-                    <span class="action-hint" style="margin-top: 1rem;">Click to copy username</span>
+            <!-- Franchise Owner: _lost101 -->
+            <div class="owner-section" style="margin-top: 3.5rem;">
+                <div class="owner-card" onclick="copyToClipboard('_lost101', this)">
+                    <div class="owner-img-container">
+                        <img src="lost" alt="_lost101" class="owner-img">
+                    </div>
+                    <div class="owner-info">
+                        <span class="badge">Franchise Owner</span>
+                        <div class="member-name">_lost101</div>
+                        <p class="member-desc">Founder and supreme head of ZOOM.FC. Directing overall team strategy, franchise management, roster acquisitions, and high-level competitive operations within the Rematch ecosystem.</p>
+                        <span class="action-hint" style="margin-top: 1.2rem; display: inline-block;">Click to copy username</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Core Five & Creators -->
-        <div class="roster-grid">
-            <!-- Player 2: eXodius (copies bigsteppa_batman) -->
-            <div class="player-card" onclick="copyToClipboard('bigsteppa_batman', this)">
-                <div class="player-img-container">
-                    <img src="image_3.png" alt="eXodius" class="player-img">
+            <!-- Core Duo: eXodius & soxsuvaa -->
+            <div class="duo-grid">
+                <!-- Player 2: eXodius (copies bigsteppa_batman) -->
+                <div class="player-card" onclick="copyToClipboard('bigsteppa_batman', this)">
+                    <div class="player-img-container">
+                        <img src="exo" alt="eXodius" class="player-img">
+                    </div>
+                    <div class="player-name">eXodius</div>
+                    <div class="player-role">Striker</div>
+                    <span class="action-hint">Click to copy</span>
                 </div>
-                <div class="player-name">eXodius</div>
-                <div class="player-role">Captain / Forward</div>
-                <span class="action-hint">Click to copy</span>
-            </div>
 
-            <!-- Player 3: soxsuvaa -->
-            <div class="player-card" onclick="copyToClipboard('soxsuvaa', this)">
-                <div class="player-img-container">
-                    <img src="image_4.png" alt="soxsuvaa" class="player-img">
+                <!-- Player 3: soxsuvaa -->
+                <div class="player-card" onclick="copyToClipboard('soxsuvaa', this)">
+                    <div class="player-img-container">
+                        <img src="suva" alt="soxsuvaa" class="player-img">
+                    </div>
+                    <div class="player-name">soxsuvaa</div>
+                    <div class="player-role">Defender</div>
+                    <span class="action-hint">Click to copy</span>
                 </div>
-                <div class="player-name">soxsuvaa</div>
-                <div class="player-role">Midfielder</div>
-                <span class="action-hint">Click to copy</span>
-            </div>
-
-            <!-- Player 4 -->
-            <div class="player-card" onclick="copyToClipboard('Player Four', this)">
-                <div class="player-img-container">
-                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-muted); font-size: 0.85rem; font-weight: 600;">Player Slot 4</div>
-                </div>
-                <div class="player-name">Player Four</div>
-                <div class="player-role">Defender</div>
-                <span class="action-hint">Click to copy</span>
-            </div>
-
-            <!-- Player 5 / Creator -->
-            <div class="player-card" onclick="copyToClipboard('Player Five', this)">
-                <div class="player-img-container">
-                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-muted); font-size: 0.85rem; font-weight: 600;">Creator Slot</div>
-                </div>
-                <div class="player-name">Player Five</div>
-                <div class="player-role">Content Creator / Sub</div>
-                <span class="action-hint">Click to copy</span>
             </div>
         </div>
     </section>
 
     <!-- CONNECT & LINKS SECTION -->
     <section id="connect">
-        <h2>Connect With Us</h2>
-        <p class="subtitle">Access our official communication hubs, organization registry, and league page.</p>
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h2>Connect With Us</h2>
+            <p class="subtitle">Access our official communication hubs, organization registry, and league page.</p>
 
-        <div class="link-list">
-            <a href="mailto:contact@zoomfc.com" class="link-card">
-                <div>
-                    <div class="link-title">Official Gmail</div>
-                    <div class="link-desc">For business inquiries, tournament invites, and management contact.</div>
+            <div class="link-list">
+                <!-- Click-to-Copy Official Email -->
+                <div class="link-card" onclick="copyToClipboard('officialzoom.fc@gmail.com', this)">
+                    <div>
+                        <div class="link-title">Official Gmail</div>
+                        <div class="link-desc">officialzoom.fc@gmail.com — For business inquiries, tournament invites, and management.</div>
+                    </div>
+                    <div class="link-action">Click to copy email</div>
                 </div>
-                <div class="link-arrow">&rarr;</div>
-            </a>
 
-            <a href="https://discord.gg/yourinvite" target="_blank" class="link-card">
-                <div>
-                    <div class="link-title">Discord Community</div>
-                    <div class="link-desc">Join our official server to coordinate scrims, tryouts, and hang out with the team.</div>
-                </div>
-                <div class="link-arrow">&rarr;</div>
-            </a>
+                <!-- Discord Community -->
+                <a href="https://discord.gg/hHMV3q6TDJ" target="_blank" class="link-card">
+                    <div>
+                        <div class="link-title">Discord Community</div>
+                        <div class="link-desc">Join our official server to coordinate scrims, tryouts, and hang out with the team.</div>
+                    </div>
+                    <div class="link-action">Open Discord</div>
+                </a>
 
-            <a href="https://rematch.gg" target="_blank" class="link-card">
-                <div>
-                    <div class="link-title">Rematch Nexus & League Page</div>
-                    <div class="link-desc">View official tournament ladders, schedules, and matches directly on Rematch.</div>
-                </div>
-                <div class="link-arrow">&rarr;</div>
-            </a>
+                <!-- Rematch Nexus Link -->
+                <a href="https://arena.rematchnexus.com/organization/zoomesports" target="_blank" class="link-card">
+                    <div>
+                        <div class="link-title">Rematch Nexus & League Page</div>
+                        <div class="link-desc">View official organization directories, tournament ladders, and schedules on Rematch.</div>
+                    </div>
+                    <div class="link-action">Open Nexus</div>
+                </a>
 
-            <a href="#home" class="link-card">
-                <div>
-                    <div class="link-title">Franchise Account & Team Link</div>
-                    <div class="link-desc">Access our primary franchise hub profile and official organization directory.</div>
-                </div>
-                <div class="link-arrow">&rarr;</div>
-            </a>
+                <!-- Franchise Account / Team Link -->
+                <a href="#home" class="link-card">
+                    <div>
+                        <div class="link-title">Franchise Account & Team Link</div>
+                        <div class="link-desc">Access our primary franchise hub profile and official organization registry.</div>
+                    </div>
+                    <div class="link-action">View Hub</div>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Toast Notification -->
+    <!-- Dynamic Toast Notification Popup -->
     <div id="toast" class="toast">Copied to clipboard!</div>
 
     <footer>
@@ -442,7 +409,13 @@
     <script>
         function copyToClipboard(text, element) {
             navigator.clipboard.writeText(text).then(() => {
-                showToast(`Copied: ${text}`);
+                if(text === 'officialzoom.fc@gmail.com') {
+                    showToast('Email copied!');
+                } else if(text === '_lost101' || text === 'bigsteppa_batman' || text === 'soxsuvaa') {
+                    showToast(`Copied username: ${text}`);
+                } else {
+                    showToast(`Copied: ${text}`);
+                }
             }).catch(err => {
                 console.error('Failed to copy: ', err);
             });
@@ -454,7 +427,7 @@
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 2200);
+            }, 2300);
         }
     </script>
 
