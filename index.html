@@ -24,23 +24,18 @@
             color: var(--text-main); 
             line-height: 1.6; 
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Ambient Dynamic Background Glows */
-        .bg-fx {
+        /* Snowflake Background Canvas */
+        #snow-canvas {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
             z-index: -1;
-            background: 
-                radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
-                radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
-            animation: ambientShift 12s ease-in-out infinite alternate;
-        }
-
-        @keyframes ambientShift {
-            0% { transform: scale(1); opacity: 0.7; }
-            100% { transform: scale(1.06); opacity: 1; }
         }
 
         /* Cyber Glass Header */
@@ -81,6 +76,8 @@
             opacity: 0; 
             transform: translateY(40px); 
             animation: sectionAppear 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            position: relative;
+            z-index: 1;
         }
 
         section:nth-of-type(1) { animation-delay: 0.1s; }
@@ -261,7 +258,7 @@
         }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-        footer { text-align: center; padding: 3.5rem; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1.5px; }
+        footer { text-align: center; padding: 3.5rem; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1.5px; position: relative; z-index: 1; }
 
         /* Mobile Responsive Tweaks */
         @media(max-width: 768px) {
@@ -275,7 +272,8 @@
 </head>
 <body>
 
-    <div class="bg-fx"></div>
+    <!-- Background Snowflakes Canvas -->
+    <canvas id="snow-canvas"></canvas>
 
     <header>
         <a href="#home" class="logo">ZOOM.FC</a>
@@ -289,20 +287,20 @@
     <!-- HOME / MISSION SECTION -->
     <section id="home" class="hero">
         <h1>DOMINATE THE PITCH.</h1>
-        <p>Welcome to ZOOM.FC. We are an elite competitive force operating within the Rematch ecosystem, driven by absolute precision, elite teamwork, and an unyielding hunger for championship victory.</p>
+        <p>Welcome to ZOOM.FC. We're a competitive esports team playing Rematch, working hard to win games and climb the ranks.</p>
         
         <div class="grid-3" style="text-align: left; margin-top: 5rem;">
             <div class="card">
-                <h3>Our Mission</h3>
-                <p>To cultivate an elite competitive environment that pushes tactical boundaries, promotes individual skill mastery, and builds an enduring championship legacy across Rematch leagues.</p>
+                <h3>What We Do</h3>
+                <p>We practice hard, play as a team, and try to get better every single day in Rematch.</p>
             </div>
             <div class="card">
                 <h3>Our Goals</h3>
-                <p>Secure dominant tournament podium finishes, scale our creator network, and establish ZOOM.FC as a premier brand feared throughout the competitive community.</p>
+                <p>Win tournaments, grow our socials, and make ZOOM.FC a name everyone knows.</p>
             </div>
             <div class="card">
                 <h3>Active Games</h3>
-                <p>We are currently active and competing daily in <strong>Rematch</strong> leagues, high-stakes matches, and exclusive franchise tournaments to keep our gameplay sharp.</p>
+                <p>We play <strong>Rematch</strong> matches and tournaments every day to keep our skills sharp.</p>
             </div>
         </div>
     </section>
@@ -311,7 +309,7 @@
     <section id="roster">
         <div class="roster-container">
             <h2>Roster & Leadership</h2>
-            <p class="subtitle">Click any member card to instantly copy their core username to your clipboard.</p>
+            <p class="subtitle">Click any member card to copy their username.</p>
 
             <!-- Franchise Owner: _lost101 -->
             <div class="owner-section" style="margin-top: 3.5rem;">
@@ -322,7 +320,7 @@
                     <div class="owner-info">
                         <span class="badge">Franchise Owner</span>
                         <div class="member-name">_lost101</div>
-                        <p class="member-desc">Founder and supreme head of ZOOM.FC. Directing overall team strategy, franchise management, roster acquisitions, and high-level competitive operations within the Rematch ecosystem.</p>
+                        <p class="member-desc">Runs the team, handles the roster, and sets up matches for ZOOM.FC.</p>
                         <span class="action-hint" style="margin-top: 1.2rem; display: inline-block;">Click to copy username</span>
                     </div>
                 </div>
@@ -336,7 +334,7 @@
                         <img src="./exo.jpg" alt="eXodius" class="player-img" onerror="this.onerror=null; this.src='./exo.png';">
                     </div>
                     <div class="player-name">eXodius</div>
-                    <div class="player-role">Striker</div>
+                    <div class="player-role">Striker / Manager</div>
                     <span class="action-hint">Click to copy</span>
                 </div>
 
@@ -346,7 +344,7 @@
                         <img src="./suva.jpg" alt="soxsuvaa" class="player-img" onerror="this.onerror=null; this.src='./suva.png';">
                     </div>
                     <div class="player-name">soxsuvaa</div>
-                    <div class="player-role">Defender</div>
+                    <div class="player-role">Defender / Manager</div>
                     <span class="action-hint">Click to copy</span>
                 </div>
             </div>
@@ -357,14 +355,14 @@
     <section id="connect">
         <div style="max-width: 1000px; margin: 0 auto;">
             <h2>Connect With Us</h2>
-            <p class="subtitle">Access our official communication hubs, organization registry, and social channels.</p>
+            <p class="subtitle">Hit us up or check out our pages below.</p>
 
             <div class="link-list">
                 <!-- Click-to-Copy Official Email -->
                 <div class="link-card" onclick="copyToClipboard('officialzoom.fc@gmail.com', this)">
                     <div>
                         <div class="link-title">Official Gmail</div>
-                        <div class="link-desc">officialzoom.fc@gmail.com — For business inquiries, tournament invites, and management.</div>
+                        <div class="link-desc">officialzoom.fc@gmail.com — Hit us up for business and tourneys.</div>
                     </div>
                     <div class="link-action">Click to copy email</div>
                 </div>
@@ -373,7 +371,7 @@
                 <a href="https://discord.gg/hHMV3q6TDJ" target="_blank" class="link-card">
                     <div>
                         <div class="link-title">Discord Community</div>
-                        <div class="link-desc">Join our official server to coordinate scrims, tryouts, and hang out with the team.</div>
+                        <div class="link-desc">Join our server to play with us or hang out.</div>
                     </div>
                     <div class="link-action">Open Discord</div>
                 </a>
@@ -382,7 +380,7 @@
                 <a href="https://arena.rematchnexus.com/organization/zoomesports" target="_blank" class="link-card">
                     <div>
                         <div class="link-title">Rematch Nexus & League Page</div>
-                        <div class="link-desc">View official organization directories, tournament ladders, and schedules on Rematch.</div>
+                        <div class="link-desc">Check out our page on the Rematch tournament hub.</div>
                     </div>
                     <div class="link-action">Open Nexus</div>
                 </a>
@@ -391,7 +389,7 @@
                 <a href="https://www.tiktok.com/@zoom.esports5" target="_blank" class="link-card">
                     <div>
                         <div class="link-title">Franchise Account (TikTok)</div>
-                        <div class="link-desc">Check out our official TikTok page for highlights, clips, and team updates.</div>
+                        <div class="link-desc">Watch our edits, highlights, and clips on TikTok.</div>
                     </div>
                     <div class="link-action">Open TikTok</div>
                 </a>
@@ -407,6 +405,58 @@
     </footer>
 
     <script>
+        // Snowflake Background Animation Script
+        const canvas = document.getElementById('snow-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const snowflakes = [];
+        const numSnowflakes = 65;
+
+        for (let i = 0; i < numSnowflakes; i++) {
+            snowflakes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                speedY: Math.random() * 0.7 + 0.3,
+                speedX: (Math.random() - 0.5) * 0.4,
+                opacity: Math.random() * 0.6 + 0.2
+            });
+        }
+
+        function drawSnow() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#ffffff';
+
+            snowflakes.forEach(flake => {
+                ctx.globalAlpha = flake.opacity;
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                flake.y += flake.speedY;
+                flake.x += flake.speedX;
+
+                if (flake.y > canvas.height) {
+                    flake.y = 0;
+                    flake.x = Math.random() * canvas.width;
+                }
+                if (flake.x > canvas.width || flake.x < 0) {
+                    flake.x = Math.random() * canvas.width;
+                }
+            });
+
+            requestAnimationFrame(drawSnow);
+        }
+        drawSnow();
+
+        // Clipboard Copy Script
         function copyToClipboard(text, element) {
             navigator.clipboard.writeText(text).then(() => {
                 if(text === 'officialzoom.fc@gmail.com') {
