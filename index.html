@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZOOM.FC | Rematch Esports Elite</title>
     
-    <!-- Open Graph / Discord Embed Meta Tags (No description text, only title & image) -->
+    <!-- Open Graph / Discord Embed Meta Tags (No description so Discord only shows title & big image) -->
     <meta property="og:title" content="ZOOM.ESPORTS">
     <meta property="og:image" content="./zoom_logo.png">
-    <meta property="theme-color" content="#737373">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#737373">
 
     <style>
         :root {
@@ -435,7 +436,7 @@
     </footer>
 
     <script>
-        // Intersection Observer for 1000x smoother silky-smooth scroll fade/slide page transitions
+        // Intersection Observer for silky-smooth scroll fade/slide page transitions
         const observerOptions = {
             root: null,
             rootMargin: '0px 0px -10% 0px',
@@ -454,7 +455,7 @@
             observer.observe(section);
         });
 
-        // Enhanced Dynamic Snowflakes Background Animation Script (Smooth Circular Flakes)
+        // Enhanced Dynamic Snowflakes Background Animation Script
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
 
