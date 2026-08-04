@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZOOM.FC | Rematch Esports Elite</title>
     
-    <!-- Open Graph / Discord Embed Meta Tags (No description tag included so Discord only embeds the title & image) -->
+    <!-- Open Graph / Discord Embed Meta Tags -->
     <meta property="og:title" content="ZOOM.ESPORTS">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://zoom-fc.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zoom-fc.vercel.app/">
+    <meta property="og:image" content="https://zoom-fc.vercel.app/zoom_embed.png">
+    <meta property="og:image:secure_url" content="https://zoom-fc.vercel.app/zoom_embed.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
 
-<meta property="og:image" content="https://zoom-fc.vercel.app/zoom_embed.png">
-<meta property="og:image:secure_url" content="https://zoom-fc.vercel.app/zoom_embed.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="1200">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ZOOM.ESPORTS">
+    <meta name="twitter:image" content="https://zoom-fc.vercel.app/zoom_embed.png">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ZOOM.ESPORTS">
-<meta name="twitter:image" content="https://zoom-fc.vercel.app/zoom_embed.png">
-
-<meta name="theme-color" content="#737373">
+    <meta name="theme-color" content="#737373">
 
     <style>
         :root {
@@ -177,7 +176,7 @@
         .card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--accent); font-weight: 800; letter-spacing: -0.5px; }
         .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
 
-        /* Core Three Roster & Leadership Section */
+        /* Core Roster & Leadership Section */
         .roster-container { max-width: 1000px; margin: 0 auto; }
         
         /* Franchise Owner Layout */
@@ -221,7 +220,7 @@
         .member-name { font-size: 2.2rem; font-weight: 900; color: var(--accent); margin-bottom: 0.4rem; letter-spacing: -0.5px; }
         .member-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-        /* Duo Roster Grid (Core Three) */
+        /* Duo Roster Grid */
         .duo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.2rem; }
         .player-card { 
             background: var(--bg-card); 
@@ -338,7 +337,7 @@
         </div>
     </section>
 
-    <!-- ROSTER & LEADERSHIP SECTION (CORE THREE ONLY) -->
+    <!-- ROSTER & LEADERSHIP SECTION -->
     <section id="roster">
         <div class="roster-container">
             <h2>Roster & Leadership</h2>
@@ -359,15 +358,15 @@
                 </div>
             </div>
 
-            <!-- Core Duo: eXodius & soxsuvaa -->
+            <!-- Duo Roster Grid: kald0r & soxsuvaa -->
             <div class="duo-grid">
-                <!-- Player 2: eXodius (copies bigsteppa_batman) -->
-                <div class="player-card" onclick="copyToClipboard('bigsteppa_batman', this)">
+                <!-- Player 2: kald0r -->
+                <div class="player-card" onclick="copyToClipboard('kald0r', this)">
                     <div class="player-img-container">
-                        <img src="./exo.jpg" alt="eXodius" class="player-img" onerror="this.onerror=null; this.src='./exo.png';">
+                        <img src="./kal.png" alt="kald0r" class="player-img" onerror="this.onerror=null; this.src='./kal.jpg';">
                     </div>
-                    <div class="player-name">eXodius</div>
-                    <div class="player-role">Striker / Manager</div>
+                    <div class="player-name">kald0r</div>
+                    <div class="player-role">Content Creator</div>
                     <span class="action-hint">Click to copy</span>
                 </div>
 
@@ -377,7 +376,7 @@
                         <img src="./suva.jpg" alt="soxsuvaa" class="player-img" onerror="this.onerror=null; this.src='./suva.png';">
                     </div>
                     <div class="player-name">soxsuvaa</div>
-                    <div class="player-role">Defender / Manager</div>
+                    <div class="player-role">Content Creator</div>
                     <span class="action-hint">Click to copy</span>
                 </div>
             </div>
@@ -527,7 +526,7 @@
             navigator.clipboard.writeText(text).then(() => {
                 if(text === 'officialzoom.fc@gmail.com') {
                     showToast('Email copied!');
-                } else if(text === '_lost101' || text === 'bigsteppa_batman' || text === 'soxsuvaa') {
+                } else if(text === '_lost101' || text === 'kald0r' || text === 'soxsuvaa') {
                     showToast(`Copied username: ${text}`);
                 } else {
                     showToast(`Copied: ${text}`);
