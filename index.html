@@ -220,7 +220,7 @@
         .member-name { font-size: 2.2rem; font-weight: 900; color: var(--accent); margin-bottom: 0.4rem; letter-spacing: -0.5px; }
         .member-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-        /* Duo Roster Grid */
+        /* Roster Grid */
         .duo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.2rem; }
         .player-card { 
             background: var(--bg-card); 
@@ -319,20 +319,20 @@
     <!-- HOME / MISSION SECTION -->
     <section id="home" class="hero">
         <h1>DOMINATE THE PITCH.</h1>
-        <p>Welcome to ZOOM.FC. We're a competitive esports team playing Rematch, working hard to climb to the top.</p>
+        <p>Welcome to ZOOM.FC. We're a competitive esports team grinding Rematch and trying to take over the leaderboards.</p>
         
         <div class="grid-3" style="text-align: left; margin-top: 5rem;">
             <div class="card">
                 <h3>What We Do</h3>
-                <p>We practice hard, play as a team, and try to get better every single day in Rematch.</p>
+                <p>We run daily scrims, coordinate as a squad, and push each other to get better every single match.</p>
             </div>
             <div class="card">
                 <h3>Our Goals</h3>
-                <p>Win tournaments, grow our socials, and make ZOOM.FC a name everyone knows.</p>
+                <p>Win tournaments, build up our brand, and put ZOOM.FC on the map.</p>
             </div>
             <div class="card">
                 <h3>Active Games</h3>
-                <p>We play Rematch scrimmages every day to keep our skills sharp.</p>
+                <p>Mainly grinding Rematch matches and testing out new strategies together.</p>
             </div>
         </div>
     </section>
@@ -352,31 +352,41 @@
                     <div class="owner-info">
                         <span class="badge">Franchise Owner</span>
                         <div class="member-name">_lost101</div>
-                        <p class="member-desc">Runs the team, handles the roster, and sets up matches for ZOOM.FC.</p>
+                        <p class="member-desc">Runs the team, organizes the roster, and manages everything behind the scenes for ZOOM.FC.</p>
                         <span class="action-hint" style="margin-top: 1.2rem; display: inline-block;">Click to copy username</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Duo Roster Grid: kald0r & soxsuvaa -->
+            <!-- Roster Grid -->
             <div class="duo-grid">
-                <!-- Player 2: kald0r -->
-                <div class="player-card" onclick="copyToClipboard('kald0r', this)">
-                    <div class="player-img-container">
-                        <img src="./kal.png" alt="kald0r" class="player-img" onerror="this.onerror=null; this.src='./kal.jpg';">
-                    </div>
-                    <div class="player-name">kald0r</div>
-                    <div class="player-role">Content Creator</div>
-                    <span class="action-hint">Click to copy</span>
-                </div>
-
-                <!-- Player 3: soxsuvaa -->
+                <!-- Player: soxsuvaa -->
                 <div class="player-card" onclick="copyToClipboard('soxsuvaa', this)">
                     <div class="player-img-container">
                         <img src="./suva.jpg" alt="soxsuvaa" class="player-img" onerror="this.onerror=null; this.src='./suva.png';">
                     </div>
                     <div class="player-name">soxsuvaa</div>
                     <div class="player-role">Manager / Defender / Content Creator</div>
+                    <span class="action-hint">Click to copy</span>
+                </div>
+
+                <!-- Player: kald0r -->
+                <div class="player-card" onclick="copyToClipboard('kald0r', this)">
+                    <div class="player-img-container">
+                        <img src="./kal.png" alt="kald0r" class="player-img" onerror="this.onerror=null; this.src='./kal.jpg';">
+                    </div>
+                    <div class="player-name">kald0r</div>
+                    <div class="player-role">Content Creator / Striker</div>
+                    <span class="action-hint">Click to copy</span>
+                </div>
+
+                <!-- Player: Troc -->
+                <div class="player-card" onclick="copyToClipboard('troc.', this)">
+                    <div class="player-img-container">
+                        <img src="./troc.png" alt="Troc" class="player-img" onerror="this.onerror=null; this.src='./troc.jpg';">
+                    </div>
+                    <div class="player-name">Troc</div>
+                    <div class="player-role">Content Creator / Winger</div>
                     <span class="action-hint">Click to copy</span>
                 </div>
             </div>
@@ -403,7 +413,7 @@
                 <a href="https://discord.gg/hHMV3q6TDJ" target="_blank" class="link-card">
                     <div>
                         <div class="link-title">Discord Community</div>
-                        <div class="link-desc">Join our 63-member community server to play with us or hang out.</div>
+                        <div class="link-desc">Come hang out in our community server or squad up with us.</div>
                     </div>
                     <div class="link-action">Open Discord</div>
                 </a>
@@ -412,7 +422,7 @@
                 <a href="https://arena.rematchnexus.com/organization/zoomesports" target="_blank" class="link-card">
                     <div>
                         <div class="link-title">Rematch Nexus & League Page</div>
-                        <div class="link-desc">Check out our page on the Rematch tournament hub.</div>
+                        <div class="link-desc">Check out our team profile on the Rematch tournament hub.</div>
                     </div>
                     <div class="link-action">Open Nexus</div>
                 </a>
@@ -421,7 +431,7 @@
                 <a href="https://www.tiktok.com/@zoom.esports5" target="_blank" class="link-card">
                     <div>
                         <div class="link-title">Franchise Account (TikTok)</div>
-                        <div class="link-desc">Watch our edits, highlights, and clips on TikTok.</div>
+                        <div class="link-desc">Catch our clips, edits, and team highlights on TikTok.</div>
                     </div>
                     <div class="link-action">Open TikTok</div>
                 </a>
@@ -430,7 +440,7 @@
                 <a href="https://cash.app/$ZOOMFC" target="_blank" class="link-card">
                     <div>
                         <div class="link-title">Cash App</div>
-                        <div class="link-desc">Support the team or send donations via Cash App.</div>
+                        <div class="link-desc">Support the squad or drop a tip via Cash App.</div>
                     </div>
                     <div class="link-action">Open Cash App</div>
                 </a>
@@ -526,7 +536,7 @@
             navigator.clipboard.writeText(text).then(() => {
                 if(text === 'officialzoom.fc@gmail.com') {
                     showToast('Email copied!');
-                } else if(text === '_lost101' || text === 'kald0r' || text === 'soxsuvaa') {
+                } else if(text === '_lost101' || text === 'kald0r' || text === 'soxsuvaa' || text === 'troc.') {
                     showToast(`Copied username: ${text}`);
                 } else {
                     showToast(`Copied: ${text}`);
