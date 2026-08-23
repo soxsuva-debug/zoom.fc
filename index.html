@@ -267,34 +267,34 @@
             box-shadow: 0 0 20px rgba(255,255,255,0.35);
         }
 
-        /* Glowing Orbit TikTok Button (Spinning along the button's border) */
+        /* Perfect Border-Locked Glowing Orbit TikTok Button */
         .tiktok-btn-wrapper {
             position: relative;
             display: inline-block;
             border-radius: 8px;
-            overflow: hidden; /* Clips the orb strictly inside/along the button boundaries */
+            padding: 1px; /* matches border width exactly */
         }
 
-        /* Glowing Orbit Effect moving right along the perimeter */
+        /* Smooth border-hugging orb trajectory using absolute keyframes */
         .tiktok-btn-wrapper::before {
             content: '';
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: #ffffff;
             border-radius: 50%;
-            box-shadow: 0 0 10px #ffffff, 0 0 18px #ffffff, 0 0 25px #ffffff;
-            animation: orbitBorder 3.5s linear infinite;
+            box-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff, 0 0 20px #ffffff;
+            animation: orbitBorderExact 3.2s linear infinite;
             pointer-events: none;
             z-index: 4;
         }
 
-        @keyframes orbitBorder {
-            0%   { top: 0px; left: 0px; }
-            25%  { top: 0px; left: calc(100% - 8px); }
-            50%  { top: calc(100% - 8px); left: calc(100% - 8px); }
-            75%  { top: calc(100% - 8px); left: 0px; }
-            100% { top: 0px; left: 0px; }
+        @keyframes orbitBorderExact {
+            0%   { top: -1px; left: -1px; }
+            25%  { top: -1px; left: calc(100% - 5px); }
+            50%  { top: calc(100% - 5px); left: calc(100% - 5px); }
+            75%  { top: calc(100% - 5px); left: -1px; }
+            100% { top: -1px; left: -1px; }
         }
 
         .tiktok-btn {
@@ -409,7 +409,7 @@
     <section id="roster">
         <div class="roster-container">
             <h2>Roster & Leadership</h2>
-            <p class="subtitle">Click any member card to copy their username or check out our TikToks!</p>
+            <p class="subtitle">Click any member card to copy their Discord username or check out our TikToks!</p>
 
             <!-- Franchise Owner: _lost101 -->
             <div class="owner-section" style="margin-top: 3.5rem;">
@@ -422,7 +422,7 @@
                         <div class="member-name">_lost101</div>
                         <p class="member-desc">Runs the team, organizes the roster, and manages everything behind the scenes for ZOOM.FC.</p>
                         <div class="card-actions" style="justify-content: flex-start; margin-top: 1.2rem; padding: 0;">
-                            <span class="action-hint" onclick="copyToClipboard('_lost101')">Click to copy</span>
+                            <span class="action-hint" onclick="copyToClipboard('_lost101')">Click to copy discord</span>
                             <div class="tiktok-btn-wrapper">
                                 <a href="https://www.tiktok.com/@official_lost101" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
                             </div>
@@ -441,7 +441,7 @@
                     <div class="player-name">soxsuvaa</div>
                     <div class="player-role">Manager / Defender / Content Creator</div>
                     <div class="card-actions">
-                        <span class="action-hint" onclick="copyToClipboard('soxsuvaa')">Click to copy</span>
+                        <span class="action-hint" onclick="copyToClipboard('soxsuvaa')">Click to copy discord</span>
                         <div class="tiktok-btn-wrapper">
                             <a href="https://www.tiktok.com/@not.p1nk" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
                         </div>
@@ -456,7 +456,7 @@
                     <div class="player-name">kald0r</div>
                     <div class="player-role">Content Creator / Striker</div>
                     <div class="card-actions">
-                        <span class="action-hint" onclick="copyToClipboard('kald0r')">Click to copy</span>
+                        <span class="action-hint" onclick="copyToClipboard('kald0r')">Click to copy discord</span>
                         <div class="tiktok-btn-wrapper">
                             <a href="https://www.tiktok.com/@scrill3x" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
                         </div>
@@ -471,7 +471,7 @@
                     <div class="player-name">Troc</div>
                     <div class="player-role">Content Creator / CAM</div>
                     <div class="card-actions">
-                        <span class="action-hint" onclick="copyToClipboard('troc.')">Click to copy</span>
+                        <span class="action-hint" onclick="copyToClipboard('troc.')">Click to copy discord</span>
                         <div class="tiktok-btn-wrapper">
                             <a href="https://www.tiktok.com/@trocnosretep" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
                         </div>
@@ -625,7 +625,7 @@
                 if(text === 'officialzoom.fc@gmail.com') {
                     showToast('Email copied!');
                 } else if(text === '_lost101' || text === 'kald0r' || text === 'soxsuvaa' || text === 'troc.') {
-                    showToast(`Copied username: ${text}`);
+                    showToast(`Copied Discord username: ${text}`);
                 } else {
                     showToast(`Copied: ${text}`);
                 }
