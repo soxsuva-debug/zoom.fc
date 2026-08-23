@@ -185,7 +185,7 @@
             border: 1px solid var(--border-glow); 
             border-radius: 20px; 
             display: flex; flex-direction: column; align-items: center; 
-            padding: 2.8rem; gap: 2.5rem; cursor: pointer; 
+            padding: 2.8rem; gap: 2.5rem; 
             position: relative; overflow: hidden; margin-bottom: 2.5rem;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
@@ -226,7 +226,7 @@
             background: var(--bg-card); 
             border: 1px solid var(--border-color); 
             border-radius: 18px; overflow: hidden; text-align: center; padding-bottom: 2rem; 
-            cursor: pointer; position: relative; 
+            position: relative; 
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease; 
         }
         .player-card:hover { 
@@ -243,15 +243,84 @@
         .player-name { font-size: 1.4rem; font-weight: 800; margin: 1.5rem 0 0.3rem; color: var(--accent); }
         .player-role { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
         
+        /* Action buttons container */
+        .card-actions {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            padding: 0 1.5rem;
+        }
+
         .action-hint { 
-            display: inline-block; padding: 0.55rem 1.4rem; background: var(--accent-dim); 
+            display: inline-block; padding: 0.55rem 1.2rem; background: var(--accent-dim); 
             border: 1px solid var(--border-color); color: var(--text-main); border-radius: 8px; 
-            font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px;
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; cursor: pointer;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
         }
-        .player-card:hover .action-hint, .owner-card:hover .action-hint, .link-card:hover .link-action { 
-            background: var(--accent); color: var(--bg-deep); border-color: var(--accent); 
+        .player-card:hover .action-hint, .owner-card:hover .action-hint, .link-card:hover .link-action,
+        .player-card:hover .tiktok-btn, .owner-card:hover .tiktok-btn { 
+            border-color: var(--accent); 
+        }
+        .action-hint:hover {
+            background: var(--accent); color: var(--bg-deep); 
             box-shadow: 0 0 20px rgba(255,255,255,0.35);
+        }
+
+        /* Glowing Orbit TikTok Button */
+        .tiktok-btn-wrapper {
+            position: relative;
+            display: inline-block;
+            border-radius: 9px;
+            overflow: visible;
+            padding: 2px; /* Space for the orbiting orb */
+        }
+
+        /* Glowing Orbit Effect */
+        .tiktok-btn-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            box-shadow: 0 0 12px #ffffff, 0 0 20px #ffffff;
+            animation: orbitBtn 3s linear infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes orbitBtn {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) translateX(45px) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) translateX(45px) rotate(-360deg);
+            }
+        }
+
+        .tiktok-btn {
+            position: relative;
+            display: inline-block; 
+            padding: 0.55rem 1.2rem; 
+            background: #000000; 
+            border: 1px solid var(--border-glow); 
+            color: var(--accent); 
+            border-radius: 8px; 
+            font-size: 0.8rem; 
+            font-weight: 700; 
+            letter-spacing: 0.5px; 
+            text-decoration: none; 
+            z-index: 3;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .tiktok-btn:hover {
+            background: var(--accent); 
+            color: var(--bg-deep); 
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255,255,255,0.4);
         }
 
         /* Connect Hub Links */
@@ -299,6 +368,9 @@
             .hero { padding: 9rem 5% 5rem; }
             .link-card { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
             .link-action { width: 100%; text-align: center; }
+            .card-actions { flex-direction: column; align-items: stretch; }
+            .tiktok-btn-wrapper { width: 100%; display: block; }
+            .tiktok-btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -341,11 +413,11 @@
     <section id="roster">
         <div class="roster-container">
             <h2>Roster & Leadership</h2>
-            <p class="subtitle">Click any member card to copy their username.</p>
+            <p class="subtitle">Click any member card to copy their username or check out our TikToks!</p>
 
             <!-- Franchise Owner: _lost101 -->
             <div class="owner-section" style="margin-top: 3.5rem;">
-                <div class="owner-card" onclick="copyToClipboard('_lost101', this)">
+                <div class="owner-card">
                     <div class="owner-img-container">
                         <img src="./lost.png" alt="_lost101" class="owner-img" onerror="this.onerror=null; this.src='./lost.jpg';">
                     </div>
@@ -353,7 +425,12 @@
                         <span class="badge">Franchise Owner</span>
                         <div class="member-name">_lost101</div>
                         <p class="member-desc">Runs the team, organizes the roster, and manages everything behind the scenes for ZOOM.FC.</p>
-                        <span class="action-hint" style="margin-top: 1.2rem; display: inline-block;">Click to copy username</span>
+                        <div class="card-actions" style="justify-content: flex-start; margin-top: 1.2rem; padding: 0;">
+                            <span class="action-hint" onclick="copyToClipboard('_lost101')">Click to copy</span>
+                            <div class="tiktok-btn-wrapper">
+                                <a href="https://www.tiktok.com/@official_lost101" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -361,33 +438,48 @@
             <!-- Roster Grid -->
             <div class="duo-grid">
                 <!-- Player: soxsuvaa -->
-                <div class="player-card" onclick="copyToClipboard('soxsuvaa', this)">
+                <div class="player-card">
                     <div class="player-img-container">
                         <img src="./suva.jpg" alt="soxsuvaa" class="player-img" onerror="this.onerror=null; this.src='./suva.png';">
                     </div>
                     <div class="player-name">soxsuvaa</div>
                     <div class="player-role">Manager / Defender / Content Creator</div>
-                    <span class="action-hint">Click to copy</span>
+                    <div class="card-actions">
+                        <span class="action-hint" onclick="copyToClipboard('soxsuvaa')">Click to copy</span>
+                        <div class="tiktok-btn-wrapper">
+                            <a href="https://www.tiktok.com/@not.p1nk" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Player: kald0r -->
-                <div class="player-card" onclick="copyToClipboard('kald0r', this)">
+                <div class="player-card">
                     <div class="player-img-container">
                         <img src="./kal.png" alt="kald0r" class="player-img" onerror="this.onerror=null; this.src='./kal.jpg';">
                     </div>
                     <div class="player-name">kald0r</div>
                     <div class="player-role">Content Creator / Striker</div>
-                    <span class="action-hint">Click to copy</span>
+                    <div class="card-actions">
+                        <span class="action-hint" onclick="copyToClipboard('kald0r')">Click to copy</span>
+                        <div class="tiktok-btn-wrapper">
+                            <a href="https://www.tiktok.com/@scrill3x" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Player: Troc -->
-                <div class="player-card" onclick="copyToClipboard('troc.', this)">
+                <div class="player-card">
                     <div class="player-img-container">
                         <img src="./troc.png" alt="Troc" class="player-img" onerror="this.onerror=null; this.src='./troc.jpg';">
                     </div>
                     <div class="player-name">Troc</div>
-                    <div class="player-role">Content Creator / Winger</div>
-                    <span class="action-hint">Click to copy</span>
+                    <div class="player-role">Content Creator / CAM</div>
+                    <div class="card-actions">
+                        <span class="action-hint" onclick="copyToClipboard('troc.')">Click to copy</span>
+                        <div class="tiktok-btn-wrapper">
+                            <a href="https://www.tiktok.com/@trocnosretep" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -401,7 +493,7 @@
 
             <div class="link-list">
                 <!-- Click-to-Copy Official Email -->
-                <div class="link-card" onclick="copyToClipboard('officialzoom.fc@gmail.com', this)">
+                <div class="link-card" onclick="copyToClipboard('officialzoom.fc@gmail.com')">
                     <div>
                         <div class="link-title">Official Gmail</div>
                         <div class="link-desc">officialzoom.fc@gmail.com — Hit us up for business and tourneys.</div>
@@ -532,7 +624,7 @@
         drawSnow();
 
         // Clipboard Copy Script
-        function copyToClipboard(text, element) {
+        function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
                 if(text === 'officialzoom.fc@gmail.com') {
                     showToast('Email copied!');
