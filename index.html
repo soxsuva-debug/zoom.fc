@@ -190,7 +190,7 @@
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
-        .owner-card:hover { 
+        .owner-card:hover, .owner-card.hover-state { 
             transform: translateY(-8px) scale(1.01); 
             border-color: var(--accent); 
             box-shadow: 0 35px 70px rgba(255,255,255,0.08), 0 0 30px rgba(255,255,255,0.05); 
@@ -201,9 +201,9 @@
             box-shadow: 0 0 25px rgba(255,255,255,0.12);
             transition: box-shadow 0.4s ease;
         }
-        .owner-card:hover .owner-img-container { box-shadow: 0 0 35px rgba(255,255,255,0.3); }
+        .owner-card:hover .owner-img-container, .owner-card.hover-state .owner-img-container { box-shadow: 0 0 35px rgba(255,255,255,0.3); }
         .owner-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .owner-card:hover .owner-img { transform: scale(1.12) rotate(2deg); }
+        .owner-card:hover .owner-img, .owner-card.hover-state .owner-img { transform: scale(1.12) rotate(2deg); }
         .owner-info { text-align: center; flex-grow: 1; }
         @media(min-width: 768px) { 
             .owner-card { flex-direction: row; text-align: left; } 
@@ -216,7 +216,7 @@
             border-radius: 30px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1rem; 
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .owner-card:hover .badge { transform: scale(1.05); box-shadow: 0 0 15px rgba(255,255,255,0.5); }
+        .owner-card:hover .badge, .owner-card.hover-state .badge { transform: scale(1.05); box-shadow: 0 0 15px rgba(255,255,255,0.5); }
         .member-name { font-size: 2.2rem; font-weight: 900; color: var(--accent); margin-bottom: 0.4rem; letter-spacing: -0.5px; }
         .member-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
@@ -229,7 +229,7 @@
             position: relative; 
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease; 
         }
-        .player-card:hover { 
+        .player-card:hover, .player-card.hover-state { 
             transform: translateY(-10px) scale(1.02); 
             border-color: var(--border-glow); 
             box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.03); 
@@ -239,7 +239,7 @@
             border-bottom: 1px solid var(--border-color); position: relative; 
         }
         .player-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .player-card:hover .player-img { transform: scale(1.12) rotate(-2deg); }
+        .player-card:hover .player-img, .player-card.hover-state .player-img { transform: scale(1.12) rotate(-2deg); }
         .player-name { font-size: 1.4rem; font-weight: 800; margin: 1.5rem 0 0.3rem; color: var(--accent); }
         .player-role { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
         
@@ -258,392 +258,4 @@
             font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; cursor: pointer;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
         }
-        .player-card:hover .action-hint, .owner-card:hover .action-hint, .link-card:hover .link-action,
-        .player-card:hover .tiktok-btn, .owner-card:hover .tiktok-btn { 
-            border-color: var(--accent); 
-        }
-        .action-hint:hover {
-            background: var(--accent); color: var(--bg-deep); 
-            box-shadow: 0 0 20px rgba(255,255,255,0.35);
-        }
-
-        /* Perfect Border-Locked Glowing Orbit TikTok Button with Precise Boundary Tracking */
-        .tiktok-btn-wrapper {
-            position: relative;
-            display: inline-block;
-            border-radius: 8px;
-            /* Container padding & box-sizing context for absolute perimeter calculation */
-            padding: 0px; 
-        }
-
-        /* Perfectly aligned border orbit path */
-        .tiktok-btn-wrapper::before {
-            content: '';
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: #ffffff;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #ffffff, 0 0 14px #ffffff, 0 0 20px #ffffff;
-            animation: orbitPerimeterExact 3.2s linear infinite;
-            pointer-events: none;
-            z-index: 4;
-        }
-
-        @keyframes orbitPerimeterExact {
-            0%   { top: -3px; left: -3px; }
-            25%  { top: -3px; left: calc(100% - 3px); }
-            50%  { top: calc(100% - 3px); left: calc(100% - 3px); }
-            75%  { top: calc(100% - 3px); left: -3px; }
-            100% { top: -3px; left: -3px; }
-        }
-
-        .tiktok-btn {
-            position: relative;
-            display: inline-block; 
-            padding: 0.55rem 1.2rem; 
-            background: #000000; 
-            border: 1px solid var(--border-glow); 
-            color: var(--accent); 
-            border-radius: 8px; 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-            letter-spacing: 0.5px; 
-            text-decoration: none; 
-            z-index: 3;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
-        }
-        .tiktok-btn:hover {
-            background: var(--accent); 
-            color: var(--bg-deep); 
-            border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(255,255,255,0.4);
-        }
-
-        /* Connect Hub Links */
-        .link-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 3.5rem; max-width: 950px; margin-left: auto; margin-right: auto; }
-        .link-card { 
-            display: flex; justify-content: space-between; align-items: center; 
-            background: var(--bg-card); border: 1px solid var(--border-color); 
-            padding: 1.8rem 2.8rem; border-radius: 18px; text-decoration: none; 
-            color: var(--text-main); cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-        }
-        .link-card:hover { 
-            border-color: var(--accent); background: var(--bg-card-hover); 
-            transform: translateX(8px) scale(1.01); box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 15px rgba(255,255,255,0.03); 
-        }
-        .link-title { font-weight: 800; font-size: 1.2rem; color: var(--accent); margin-bottom: 0.2rem; }
-        .link-desc { color: var(--text-muted); font-size: 0.9rem; }
-        .link-action { 
-            padding: 0.55rem 1.2rem; background: var(--accent-dim); 
-            border: 1px solid var(--border-color); border-radius: 8px; 
-            font-size: 0.8rem; font-weight: 700; color: var(--text-main);
-            transition: all 0.3s ease; flex-shrink: 0;
-        }
-
-        /* Section Headings */
-        h2 { font-size: 2.6rem; font-weight: 900; letter-spacing: -1px; color: var(--accent); }
-        .subtitle { color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem; }
-
-        /* Toast Popup Notification Animation */
-        .toast { 
-            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(120px) scale(0.9); 
-            background: #ffffff; color: #020202; padding: 0.95rem 2.2rem; border-radius: 40px; 
-            font-weight: 800; font-size: 0.95rem; box-shadow: 0 20px 50px rgba(0,0,0,0.7); 
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease; 
-            opacity: 0; z-index: 2000; pointer-events: none; letter-spacing: 0.5px;
-        }
-        .toast.show { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
-
-        footer { text-align: center; padding: 3.5rem; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1.5px; position: relative; z-index: 1; }
-
-        /* Mobile Responsive Tweaks */
-        @media(max-width: 768px) {
-            nav { display: none; }
-            section { padding: 6rem 5% 5rem; }
-            .hero { padding: 9rem 5% 5rem; }
-            .link-card { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
-            .link-action { width: 100%; text-align: center; }
-            .card-actions { flex-direction: column; align-items: stretch; }
-            .tiktok-btn-wrapper { width: 100%; display: block; }
-            .tiktok-btn { width: 100%; text-align: center; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Background Snowflakes Canvas -->
-    <canvas id="snow-canvas"></canvas>
-
-    <header>
-        <a href="#home" class="logo">ZOOM.FC</a>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#roster">Roster</a>
-            <a href="#connect">Connect</a>
-        </nav>
-    </header>
-
-    <!-- HOME / MISSION SECTION -->
-    <section id="home" class="hero">
-        <h1>DOMINATE THE PITCH.</h1>
-        <p>Welcome to ZOOM.FC. We're a competitive esports team grinding Rematch and trying to take over the leaderboards.</p>
-        
-        <div class="grid-3" style="text-align: left; margin-top: 5rem;">
-            <div class="card">
-                <h3>What We Do</h3>
-                <p>We run daily scrims, coordinate as a squad, and push each other to get better every single match.</p>
-            </div>
-            <div class="card">
-                <h3>Our Goals</h3>
-                <p>Win tournaments, build up our brand, and put ZOOM.FC on the map.</p>
-            </div>
-            <div class="card">
-                <h3>Active Games</h3>
-                <p>Mainly grinding Rematch matches and testing out new strategies together.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ROSTER & LEADERSHIP SECTION -->
-    <section id="roster">
-        <div class="roster-container">
-            <h2>Roster & Leadership</h2>
-            <p class="subtitle">Click any member card to copy their Discord username or check out our TikToks!</p>
-
-            <!-- Franchise Owner: _lost101 -->
-            <div class="owner-section" style="margin-top: 3.5rem;">
-                <div class="owner-card">
-                    <div class="owner-img-container">
-                        <img src="./lost.png" alt="_lost101" class="owner-img" onerror="this.onerror=null; this.src='./lost.jpg';">
-                    </div>
-                    <div class="owner-info">
-                        <span class="badge">Franchise Owner</span>
-                        <div class="member-name">_lost101</div>
-                        <p class="member-desc">Runs the team, organizes the roster, and manages everything behind the scenes for ZOOM.FC.</p>
-                        <div class="card-actions" style="justify-content: flex-start; margin-top: 1.2rem; padding: 0;">
-                            <span class="action-hint" onclick="copyToClipboard('_lost101')">Click To Copy Discord Username</span>
-                            <div class="tiktok-btn-wrapper">
-                                <a href="https://www.tiktok.com/@official_lost101" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Roster Grid -->
-            <div class="duo-grid">
-                <!-- Player: soxsuvaa -->
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="./suva.jpg" alt="soxsuvaa" class="player-img" onerror="this.onerror=null; this.src='./suva.png';">
-                    </div>
-                    <div class="player-name">soxsuvaa</div>
-                    <div class="player-role">Manager / Defender / Content Creator</div>
-                    <div class="card-actions">
-                        <span class="action-hint" onclick="copyToClipboard('soxsuvaa')">Click To Copy Discord Username</span>
-                        <div class="tiktok-btn-wrapper">
-                            <a href="https://www.tiktok.com/@not.p1nk" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Player: kald0r -->
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="./kal.png" alt="kald0r" class="player-img" onerror="this.onerror=null; this.src='./kal.jpg';">
-                    </div>
-                    <div class="player-name">kald0r</div>
-                    <div class="player-role">Content Creator / Striker</div>
-                    <div class="card-actions">
-                        <span class="action-hint" onclick="copyToClipboard('kald0r')">Click To Copy Discord Username</span>
-                        <div class="tiktok-btn-wrapper">
-                            <a href="https://www.tiktok.com/@scrill3x" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Player: Troc -->
-                <div class="player-card">
-                    <div class="player-img-container">
-                        <img src="./troc.png" alt="Troc" class="player-img" onerror="this.onerror=null; this.src='./troc.jpg';">
-                    </div>
-                    <div class="player-name">Troc</div>
-                    <div class="player-role">Content Creator / CAM</div>
-                    <div class="card-actions">
-                        <span class="action-hint" onclick="copyToClipboard('troc.')">Click To Copy Discord Username</span>
-                        <div class="tiktok-btn-wrapper">
-                            <a href="https://www.tiktok.com/@trocnosretep" target="_blank" class="tiktok-btn">Our Tiktoks!</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONNECT & LINKS SECTION -->
-    <section id="connect">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <h2>Connect With Us</h2>
-            <p class="subtitle">Hit us up or check out our pages below.</p>
-
-            <div class="link-list">
-                <!-- Click-to-Copy Official Email -->
-                <div class="link-card" onclick="copyToClipboard('officialzoom.fc@gmail.com')">
-                    <div>
-                        <div class="link-title">Official Gmail</div>
-                        <div class="link-desc">officialzoom.fc@gmail.com — Hit us up for business and tourneys.</div>
-                    </div>
-                    <div class="link-action">Click to copy email</div>
-                </div>
-
-                <!-- Discord Community -->
-                <a href="https://discord.gg/hHMV3q6TDJ" target="_blank" class="link-card">
-                    <div>
-                        <div class="link-title">Discord Community</div>
-                        <div class="link-desc">Come hang out in our community server or squad up with us.</div>
-                    </div>
-                    <div class="link-action">Open Discord</div>
-                </a>
-
-                <!-- Rematch Nexus Link -->
-                <a href="https://arena.rematchnexus.com/organization/zoomesports" target="_blank" class="link-card">
-                    <div>
-                        <div class="link-title">Rematch Nexus & League Page</div>
-                        <div class="link-desc">Check out our team profile on the Rematch tournament hub.</div>
-                    </div>
-                    <div class="link-action">Open Nexus</div>
-                </a>
-
-                <!-- Franchise TikTok Link -->
-                <a href="https://www.tiktok.com/@zoom.esports5" target="_blank" class="link-card">
-                    <div>
-                        <div class="link-title">Franchise Account (TikTok)</div>
-                        <div class="link-desc">Catch our clips, edits, and team highlights on TikTok.</div>
-                    </div>
-                    <div class="link-action">Open TikTok</div>
-                </a>
-
-                <!-- Cash App Link -->
-                <a href="https://cash.app/$ZOOMFC" target="_blank" class="link-card">
-                    <div>
-                        <div class="link-title">Cash App</div>
-                        <div class="link-desc">Support the squad or drop a tip via Cash App.</div>
-                    </div>
-                    <div class="link-action">Open Cash App</div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dynamic Toast Notification Popup -->
-    <div id="toast" class="toast">Copied to clipboard!</div>
-
-    <footer>
-        &copy; 2026 ZOOM.FC. ALL RIGHTS RESERVED.
-    </footer>
-
-    <script>
-        // Intersection Observer for silky-smooth scroll fade/slide page transitions
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -10% 0px',
-            threshold: 0.12
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active-section');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Enhanced Dynamic Snowflakes Background Animation Script
-        const canvas = document.getElementById('snow-canvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const snowflakes = [];
-        const numSnowflakes = 150;
-
-        for (let i = 0; i < numSnowflakes; i++) {
-            snowflakes.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 2.8 + 0.6,
-                speedY: Math.random() * 1.1 + 0.3,
-                speedX: (Math.random() - 0.5) * 0.6,
-                opacity: Math.random() * 0.75 + 0.25,
-                angle: Math.random() * Math.PI * 2,
-                spin: (Math.random() - 0.5) * 0.04
-            });
-        }
-
-        function drawSnow() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#ffffff';
-
-            snowflakes.forEach(flake => {
-                ctx.globalAlpha = flake.opacity;
-                ctx.beginPath();
-                ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-                ctx.fill();
-
-                flake.y += flake.speedY;
-                flake.x += flake.speedX + Math.sin(flake.angle) * 0.35;
-                flake.angle += flake.spin;
-
-                if (flake.y > canvas.height + 10) {
-                    flake.y = -10;
-                    flake.x = Math.random() * canvas.width;
-                }
-                if (flake.x > canvas.width + 10) {
-                    flake.x = -10;
-                } else if (flake.x < -10) {
-                    flake.x = canvas.width + 10;
-                }
-            });
-
-            requestAnimationFrame(drawSnow);
-        }
-        drawSnow();
-
-        // Clipboard Copy Script
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                if(text === 'officialzoom.fc@gmail.com') {
-                    showToast('Email copied!');
-                } else if(text === '_lost101' || text === 'kald0r' || text === 'soxsuvaa' || text === 'troc.') {
-                    showToast(`Copied Discord username: ${text}`);
-                } else {
-                    showToast(`Copied: ${text}`);
-                }
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2300);
-        }
-    </script>
-
-</body>
-</html>
+        .
