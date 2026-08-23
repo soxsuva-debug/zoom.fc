@@ -267,38 +267,34 @@
             box-shadow: 0 0 20px rgba(255,255,255,0.35);
         }
 
-        /* Glowing Orbit TikTok Button */
+        /* Glowing Orbit TikTok Button (Spinning along the button's border) */
         .tiktok-btn-wrapper {
             position: relative;
             display: inline-block;
-            border-radius: 9px;
-            overflow: visible;
-            padding: 2px; /* Space for the orbiting orb */
+            border-radius: 8px;
+            overflow: hidden; /* Clips the orb strictly inside/along the button boundaries */
         }
 
-        /* Glowing Orbit Effect */
+        /* Glowing Orbit Effect moving right along the perimeter */
         .tiktok-btn-wrapper::before {
             content: '';
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             background: #ffffff;
             border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            box-shadow: 0 0 12px #ffffff, 0 0 20px #ffffff;
-            animation: orbitBtn 3s linear infinite;
+            box-shadow: 0 0 10px #ffffff, 0 0 18px #ffffff, 0 0 25px #ffffff;
+            animation: orbitBorder 3.5s linear infinite;
             pointer-events: none;
-            z-index: 2;
+            z-index: 4;
         }
 
-        @keyframes orbitBtn {
-            0% {
-                transform: translate(-50%, -50%) rotate(0deg) translateX(45px) rotate(0deg);
-            }
-            100% {
-                transform: translate(-50%, -50%) rotate(360deg) translateX(45px) rotate(-360deg);
-            }
+        @keyframes orbitBorder {
+            0%   { top: 0px; left: 0px; }
+            25%  { top: 0px; left: calc(100% - 8px); }
+            50%  { top: calc(100% - 8px); left: calc(100% - 8px); }
+            75%  { top: calc(100% - 8px); left: 0px; }
+            100% { top: 0px; left: 0px; }
         }
 
         .tiktok-btn {
